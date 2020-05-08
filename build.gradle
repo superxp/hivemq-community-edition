@@ -4,7 +4,6 @@ plugins {
     id 'com.github.johnrengelman.shadow'
     id 'com.github.hierynomus.license'
     id 'org.owasp.dependencycheck'
-    id 'idea'
 
     /* Code Quality Plugins */
     id 'jacoco'
@@ -458,15 +457,5 @@ publishing {
                 }
             }
         }
-    }
-}
-
-
-/* ******************** ide ******************** */
-
-idea {
-    module {
-        downloadJavadoc = true
-        downloadSources = true
     }
 }
