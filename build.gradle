@@ -537,7 +537,7 @@ publishing {
 
             embedded(MavenPublication) {
                 from components.java
-                artifacts = [embeddedJar]
+                artifact embeddedJar
                 artifactId 'hivemq-community-edition-embedded'
                 pom {
                     name = 'HiveMQ Community Edition Embedded'
