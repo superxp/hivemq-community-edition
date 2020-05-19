@@ -119,7 +119,6 @@ class EmbeddedHiveMQImpl implements EmbeddedHiveMQ {
         } else if (currentState == State.FAILED) {
             if (failedException != null) {
                 failFutureLists(failedException, localStartFutures, localStopFutures);
-                return;
             } else {
                 log.error("Encountered a FAILED EmbeddedHiveMQ state without a reason present.");
                 failFutureLists(
