@@ -16,7 +16,6 @@
 
 package com.hivemq.security.ioc;
 
-
 import com.google.common.util.concurrent.ListeningScheduledExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import com.hivemq.bootstrap.ioc.SingletonModule;
@@ -44,9 +43,8 @@ public class SecurityModule extends SingletonModule<Class<SecurityModule>> {
         bind(SslContextStore.class).in(LazySingleton.class);
 
         bind(SslContextFactory.class).to(SslContextFactoryImpl.class);
-        final ScheduledExecutorService sslContextStoreService = Executors.newScheduledThreadPool(2);
-        final ListeningScheduledExecutorService executorService = MoreExecutors.listeningDecorator(sslContextStoreService);
-        bind(ScheduledExecutorService.class).annotatedWith(Security.class).toInstance(executorService);
-        bind(ListeningScheduledExecutorService.class).annotatedWith(Security.class).toInstance(executorService);
+        bind(ScheduledExecutorService.class).annotatedWith(Security.class)
+                .toProvider(SecurityExecutorProvider.class)
+                .in(LazySingleton.class);
     }
 }
